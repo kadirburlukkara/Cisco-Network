@@ -1,1 +1,32 @@
+End Device (Host) --> Son Cihaz
+
+Network Interface Card (NIC) --> Network Bağlantısı İçin Kullanılır
+
+Switch --> End Deviceleri Networke Kablolu Bir Şekilde Dahil Eden Cihaza Denir
+
+Access Point --> End Deviceleri Networke Kablosuz Bir Şekilde Dahil Eden Cihaza Denir.Switche Kabloyla Bağlanıyor.
+
+Router --> Networkleri Birbirine Bağlayan Cihazdır , Yani İnterneti Oluşturur.
+
+Firewall --> Güvenlik Özellikleri Arttırılmış Router Diyebiliriz
+
+Wireless Router --> Modem yani , modemin içinde router , switch ve Access Point Vardır Küçültülmüş şekilde.
+
+--Types Of Network--
+
+En Yaygın Kullanılan
+-Local Area Network (LAN) --> Aynı Locasyonda Kurulan , Kullanılan Ağ.
+-Wide Ares Network (WAN) --> Birbirinden Uzak Lokasyonda Olan LAN'ları birbirine bağlayan ağa denir
+
+Bazı diğer ağ türleri
+-Metropolitan Area Network (MAN) --> Wide Ares Network'un aynı şehirde olan versiyonudur , yinede çok kullanılmaz aynı şehirde olsa bile WAN denir ama ek bilgi bilsen iyi olur.
+-Wireless LAN (WLAN)
+-Storage Area Network (SAN)
+
+-Internet --> Dünyada Kullandığımız erişebildiğimiz ağ
+-Intranet --> Sirket Tabanlı Kapalı Ağlar Örnek Olabilir
+-Extranet --> Farklı Şirketlerin Ağlarını Birleştirdiği Yapı
+
+
+
 
