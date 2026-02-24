@@ -27,6 +27,10 @@ Bazı diğer ağ türleri
 -Intranet --> Sirket Tabanlı Kapalı Ağlar Örnek Olabilir
 -Extranet --> Farklı Şirketlerin Ağlarını Birleştirdiği Yapı
 
+C I A --> Dijital Alt Ypının Güvenli Kabul Edilebilmesi İçi 3 şart ; 
+Confidentiality (Gizlilik) --> Dosyayı Sadece Senin izin verdiklerin görebilmeli veyea okuyabilmeli
+Integrity (Bütünlük) --> Bir Dosya Sana Aitse onu sadece sen değiştirebilirsin ve kimse değiştiremeyecek sekilde ayarlanması lazım
+Availability(Erişilebilirlik) --> İhtiaycın Olan veriye ihtiayc anında ulaşabilme
 
 
 
