@@ -30,10 +30,14 @@ Bazı diğer ağ türleri
 C I A --> Dijital Alt Ypının Güvenli Kabul Edilebilmesi İçi 3 şart ; 
 Confidentiality (Gizlilik) --> Dosyayı Sadece Senin izin verdiklerin görebilmeli veyea okuyabilmeli
 Integrity (Bütünlük) --> Bir Dosya Sana Aitse onu sadece sen değiştirebilirsin ve kimse değiştiremeyecek sekilde ayarlanması lazım
+Availability(Erişilebilirlik) --> İhtiaycın Olan veriye ihtiayc anında ulaşabilme
 
 MAC Adresi -> Cihazla tanımlı gelen fiziksel bir adresstir
 İP Adresi -> Kullandığımız Networkun Bize Atadıgı mantıksal bir addresstir. 192.168.3.5    -----> 192.168.3 hangi networku kullandığımızı .5 ise host yani bize atanan değerdir
-Availability(Erişilebilirlik) --> İhtiaycın Olan veriye ihtiayc anında ulaşabilme
+
+UNICAST --> Tekil Yayın 1kişiden cıkıyor bir kişiye gidiyor
+MULTICAST --> Çoklu Yayın 1kişiden cıkıyor bir bir kişiden cıkıyor birden çok kişiye gidiyor hepsine degil genellikle
+BOARDCAST --> gENEL Yayın 1kişiden cıkıyor nertworkteki herkese gidiyor
 
 
 
