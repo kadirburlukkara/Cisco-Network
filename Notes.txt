@@ -39,5 +39,29 @@ UNICAST --> Tekil Yayın 1kişiden cıkıyor bir kişiye gidiyor
 MULTICAST --> Çoklu Yayın 1kişiden cıkıyor bir bir kişiden cıkıyor birden çok kişiye gidiyor hepsine degil genellikle
 BOARDCAST --> gENEL Yayın 1kişiden cıkıyor nertworkteki herkese gidiyor
 
+---OSI Modeli---   
+L7 - Application --> Kullanıcı arayüzü    \  
+L6 - Presentation --> İletim bicimi datayı  |  --> 7,6,5 katmanda datamız oluşuyor
+L5 - Sessions --> oturum kontrolu         /
+L4 - Transport --> paketleri segmentlere ayırıp numaralandırıyor ve kaynak ve hedef port numaraları ekleniyor
+L3 - Network --> kaynak ve hedef ip numaraları ekleniyor
+L2 - Data Link --> kaynak ve hedef mac addresslerim ve hata kontrol ekleniyor
+L1 - Physical -->oluşan paket bit değerleri olarak iletiliyor
+
+---TCP/IP Model---
+Application --> OSI Modelindeki L7, L6, L5 Katmanlarının işini yapar
+Transport --> OSI Modelindeki L4 Katmanının işini yapar
+Internet --> OSI Modelindeki L3 Katmanının işini yapar
+Network Access --> OSI Modelindeki L2, L1 Katmanlarının işini yapar
+
+L7 + L6 + L5 = DATA
+L7 + L6 + L5 + L4 = SEGMENT
+L7 + L6 + L5 + L4 + L3 = PACKET
+L7 + L6 + L5 + L4 + L3 + L2 = FRAME
+L7 + L6 + L5 + L4 + L3 + L2 + L1 = BİT
+
+
+
+
 
 
