@@ -60,6 +60,12 @@ L7 + L6 + L5 + L4 + L3 = PACKET
 L7 + L6 + L5 + L4 + L3 + L2 = FRAME
 L7 + L6 + L5 + L4 + L3 + L2 + L1 = BİT
 
+Diyelimki bir switch var ve biz bunu configre etmek istiyoruz normalde ssh ile bağlanıp bu cihazı configre edebiliriz ama 
+eğer cihaz daha önced hic kullanılmadıysa ve konfigre edilmediyse ona bağlanacagımız bir ip adresi olmadıgı için
+ROLLEVER KABLO (Console Kablosu) ile bağlanıp cihazı konfigre ederiz
+
+Kablolamada veriyi Transmint olarak yollarız karşı cihaza Recive olarak ulaşmasını isteriz
+
 
 
 
