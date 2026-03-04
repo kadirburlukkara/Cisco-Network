@@ -12,6 +12,9 @@ Firewall --> Güvenlik Özellikleri Arttırılmış Router Diyebiliriz
 
 Wireless Router --> Modem yani , modemin içinde router , switch ve Access Point Vardır Küçültülmüş şekilde.
 
+Aynı networkteki cihazlar MAC adresi ile dış bir ağ ile bağlantı sağlancaksa IP adresleri 
+kullanılır
+
 --Types Of Network--
 
 En Yaygın Kullanılan
@@ -65,6 +68,31 @@ eğer cihaz daha önced hic kullanılmadıysa ve konfigre edilmediyse ona bağla
 ROLLEVER KABLO (Console Kablosu) ile bağlanıp cihazı konfigre ederiz
 
 Kablolamada veriyi Transmint olarak yollarız karşı cihaza Recive olarak ulaşmasını isteriz
+
+Data Link Katmanı 2 ye Ayrılır;
+1 - LLC Sublayer --> Üst katmana geçiş bilgisi (IPV4 veya IPV6 yamı geçicek onu kontrol ediyor)
+2 - MAC Sublayer --> Alt kataman geçiş bilgisi (Framıng , MAC(Media Access Control))
+
+WAN Topolojileri
+Point to Point --> 2 routeri dümdüz birbirine bağlayan topoloji en basit topoloji
+Hub and spoke --> Merkezi bir cihaza bağlı olan birkaç cihazdan oluşur
+Mesh --> yüksek kullanılabilirlik sağlanır her cihaz aarsında bağlantı vardır
+
+LAN Topolojileri
+Bus(Veriyolu) --> düz bir seritte sıralanmış dallanmış topolojie denir
+Ring (halka) --> Elinde bir token var bu token her cihaza dönüyor o sırada hangi ciahzdaysa o token sadece o veri iletimi yapıyor
+Star (Yıldız) --> bir cihaz etrafında birleşmiş cihazlar toplulugu
+EXtended Star --> 2 veya daha fazla yıldız topolojisinin birleşimine denir
+
+half duplex --> sadece bir kişi göderebilir
+full duplex --> aynı handa hem gönderip hema albilirsiniz
+
+Contention-Based Access (CSMA/CD) --> Hat boşsa yolla doluysa bekle , aynı anda gönderim 
+belli bir süre bekletipsağlanırsa sayaç başlıyor sıralama icin ilk önce biri yolluyor 
+sonra digeri yolluyor --> eski ethernet LAN tarafından kullanılıyordu.
+
+Contention-Based Access (CSMA/CA) --> wifi için olan kısmı önceki yöntemdeki gibi sonda degilde
+başta cakışmayı önleyici önlemler alınıyor
 
 
 
