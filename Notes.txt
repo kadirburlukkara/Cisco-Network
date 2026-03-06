@@ -84,8 +84,8 @@ Ring (halka) --> Elinde bir token var bu token her cihaza dönüyor o sırada ha
 Star (Yıldız) --> bir cihaz etrafında birleşmiş cihazlar toplulugu
 EXtended Star --> 2 veya daha fazla yıldız topolojisinin birleşimine denir
 
-half duplex --> sadece bir kişi göderebilir
-full duplex --> aynı handa hem gönderip hema albilirsiniz
+half duplex --> sadece bir kişi göderebilir (tek yönlü iletişim)
+full duplex --> aynı handa hem gönderip hema albilirsiniz (çift yönlü iletişim)
 
 Contention-Based Access (CSMA/CD) --> Hat boşsa yolla doluysa bekle , aynı anda gönderim 
 belli bir süre bekletipsağlanırsa sayaç başlıyor sıralama icin ilk önce biri yolluyor 
@@ -93,6 +93,19 @@ sonra digeri yolluyor --> eski ethernet LAN tarafından kullanılıyordu.
 
 Contention-Based Access (CSMA/CA) --> wifi için olan kısmı önceki yöntemdeki gibi sonda degilde
 başta cakışmayı önleyici önlemler alınıyor
+
+Ethernete eklenen LLC protokolu IEEE tarafından oluşturulan bir standarttır ve açılımı Logical Link Kontrol acılımıdır.Hangi bağlantıya IPV4 veya IPV6 iletilecegi burada yazar.
+
+Min frame boyutu 64 , max frame boyutu 1518
+
+Mac Adresi Örneklerinde diyelmki söyle bir mac adresimiz olsun
+12-3F-45-98-FA-11 --> 12-3F-45 bu kısım kimin ürettigini , 
+98-FA-11 bu kısım ise bizdeki cihazı gösterir
+
+switch kendisine bağlanıp ilk defa paket yollayan adressleri mac adresi tablosuna kaydedip sonrasındada kayıtlı cıhazlara göre he bu cihazın verisi bu porttan geldi iletimiden burdan yapıyım der böyle çalışır.elinde olmayan bir mac adresine veri gelirsede tablodaki bütün mac adresslerine yollar böyle bi çalışma stili var ,swichlerin tek tuttugu tablo mac addresi diger bi adıyla CAM (Content addressable memory) Table'dır , switch herhangibi bir paket gelmeden 5 dakika bekleyen amc adreslerini tablosundan siler.
+
+switch configrasyonunda 2 ayar yapılır bir duplex yani çift yönlü iletişimmi olcak tek yönlümü bu defaultta auto gelir cihazların en optimize haline otomotik gelir , ikincisi ise speed ayarı işse akrşıdaki cihaza göre hızını ayarlayabilirisizdefaultu auto oluyor ve karşıya göre otomatikmen konfigre ediyor kendini.ayrıca eskiden chazlara göre düz veya cross kablo kullanmamız gerekiyordu artık auto mdix ile ne takarsak takalım switch karşıya göre bu ayar acıksa configre oluyor
+
 
 
 
