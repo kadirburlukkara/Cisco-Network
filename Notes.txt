@@ -106,6 +106,29 @@ switch kendisine bağlanıp ilk defa paket yollayan adressleri mac adresi tablos
 
 switch configrasyonunda 2 ayar yapılır bir duplex yani çift yönlü iletişimmi olcak tek yönlümü bu defaultta auto gelir cihazların en optimize haline otomotik gelir , ikincisi ise speed ayarı işse akrşıdaki cihaza göre hızını ayarlayabilirisizdefaultu auto oluyor ve karşıya göre otomatikmen konfigre ediyor kendini.ayrıca eskiden chazlara göre düz veya cross kablo kullanmamız gerekiyordu artık auto mdix ile ne takarsak takalım switch karşıya göre bu ayar acıksa configre oluyor
 
+--Routher amacı 2 network arasındaki bağlantıyı sağlayıp bağlantının nasıl iletileceğini seçmek
+
+--Arp sorgusu ile aynı networkteki farklı bir cihazın mac adresini öğrenmemize yarar
+
+--Default Gateway routherin ip adresi demek
+
+--IPv4 --> 32 Bit yani 2 üssü 32 demek bu akdar ip v4 addresi tanımlaanbilir, IPv6 --> 128 Bit
+
+--NAT (Network Address Transaction) bu işlem bizim internete bağlanmamızı sağlıyor biz internete bağlanmadsn önce routerimizin ip adresini alıp öyle internete cıkarız yani router ip adresi 1.1.1.1 ise ve bizim bilgisayarımız 2.2.2.2 ise biz 2.2.2.2 ile degil 1.1.1.1 ile interenete cıkarız sonra routera gelen yanıt bize yani 2.2.2.2 ye gelir , yol boyunca ip adresimiz değişmez.
+
+-- 0.0.0.0 tüm internet demek default route oalrak geçiyor , tüm internete cıkamk için 0.0.0.0 a istek yolluyoruz.
+
+--Time to Line (TTL) bir paketin nekadar hayatta kalacagını ve sonsuz döngüye girmemesi için 64 , 128 ,255 olarak ayrılır diyelimki 64 ttl bir paket olsun bana gelmesi icin gecebilecegi maks cihaz sayısı 64 olur halada iletilmediyse çöpe atılır.
+
+--IPv6 da 2001:0DB8:20BB:A111:1111:2222:3333:4444; 2001:0DB8:20BB:A111 Bu kısım ahngi networkte oldugumu , 1111:2222:3333:4444 Bu kısım ise hostumu gösterir.
+
+--Bilgisayarın routhing tablosuna bakmak için netstat -r veya route print yazabiliriz cmd ye.
+
+--routerda routhing tablosuna show ip route yazarak ulaşabiliriz.
+
+-- router tablosunda adreslerin sol kısmında bazı harfler var.L,C,S,O,D
+L doğrudan bağlı yerel arayüz IP adresi, C Doğrudan bağlı ağ , S Statik yol bir yönetici tarafından manuel olarak yapılandırıldı , O OSPF , D EIGRP. Doğrudan bağlı olanlar C ve L ,Uzak Rotalar O , D. Varsayılan Rotalar ise kısaca S* ile gösterilir.
+
 
 
 
