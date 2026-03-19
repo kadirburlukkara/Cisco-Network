@@ -129,6 +129,172 @@ switch configrasyonunda 2 ayar yapılır bir duplex yani çift yönlü iletişim
 -- router tablosunda adreslerin sol kısmında bazı harfler var.L,C,S,O,D
 L doğrudan bağlı yerel arayüz IP adresi, C Doğrudan bağlı ağ , S Statik yol bir yönetici tarafından manuel olarak yapılandırıldı , O OSPF , D EIGRP. Doğrudan bağlı olanlar C ve L ,Uzak Rotalar O , D. Varsayılan Rotalar ise kısaca S* ile gösterilir.
 
+--IPv4 de mac adresini öğrenmek için arp kullanırken , IPv6 da ICMPv6 kullanılır.
+
+--ICMPv6 da komşunun mac adresine sorgu atmak için Neighbor Solicitation(NS) , gelen cevaba  ise Neighbor Advertisement(NA) denir.
+
+--Routera statik İPmi nasıl alırım diye sordugunda IPv6da bu sorguya Router Solicitation(RS) , Router Advertisement(RA) ise gelen cevaba denir.
+
+--Bir paket boyutu şu şekilde oluşur --> ETH:18 , IP:20 , TCP:20 , DATA: gönderilen veri büyüklüğü neyse ise bu şekilde boyut alır 
+
+
+--192.168.45.1 --> router adresim olur genelde , brodcast yayın yapmak için ise 192.168.45.255 ip adresine ping atmak gerekir
+
+--A class adress aralığı 1-127 , B class adress aralığı 128-191 , C class adress aralığı 192-223 , D class adress aralığı 224-239 , E class adress aralığı 240-255 İLE TANIMLANIR.eskiden avrdı bu artık yok.
+
+--lookback adress tcp/ıp calışıyormu onu test etmek için kullanılır
+
+--link-local address dhcp sunucusundan ip adresi alamadıgında özel otomatik ip adresleme (APIPA) adrsleri veya kendi kendinme aatnan adresler oalrak bilinir bu ipler internete cıkamaz
+
+--her networkte ilk ve son ip kullanılamaz .ümkü ilk ip network ip olarak atanırken son ip brodcast ip olarak atanır.
+
+--routherlar brodcast paketlerini ve arp paketleirni ana nternete gecişrmez sadece kendi networkteki cihazlara gider.
+
+--büyük bir ip blogunun küçük aprçalara bölünüp ayrı ayrı kullanılmasına subnetting denir.bu gruplamayada yarar. 
+
+--subnet bulma
+192.168.1.00hh hhhh/26 = 192.168.1.0
+
+192.168.1.01hh hhhh/26 = 192.168.1.64
+
+192.168.1.10hh hhhh/26 = 192.168.1.128
+
+192.168.1.11hh hhhh/26 = 192.168.1.192
+
+--subnet , adress ve ip bulma
+192.168.1.ssss hhhh/28 = 4 tane s oldugu için 2üssü4=16 subnet olur ve 4 tane h oldugu için 2üssü4 den 16 adress olur bu adreslerin ilki network sonuncusu brodcast adresi oldugu icin 2üssü4-2 den 14 host tanımlaaybiliriz.
+
+--VLSM değişken uzunlukta subnet maskeleri anlamına gelir.önceki gördügümüz networklerde örnegin 64 iplik bir networkumuz varsa bunu hep 16lık 4 tane yada 8 lık 8 tane hallere getirdik VLSM ise 64lük bir networku önrnegin 4tane 8lik 2tane 16lık networke bölmeye denir
+
+--Dual stack hem ıpv4 hem ıpv6 kalsın ikisindede ıpv6 varsa onunla konuşssunlar yoksa ıpv4 kullanılsını savunur
+
+tunelling ortada bi ıpv4 cihaz olsun ve 2 ıpv6 cihazı birbirine bağlasını savunur
+
+translation bir cihazda ipv4 digerinde ıpv6 varsa aralarında anlaşacakları bir dil gibi bişeyi oluşturalım tezi
+
+--IPv6 kısaltma
+2001:0db8:0000:1111:0000:0000:0000:0200 --> 2001:db8:0:1111:0:0:0:200
+baştaki sıfırları atabiliriz
+
+diğeri ise --> 2001:db8::1111:0:0:0:200 bu ilki
+2001:db8:0:1111::200 bu ikincisi
+genelde ikincisi kabul edilir ama ilkide yanlış degildir burdaki mantık sıfır bolgelerini :: ile göstermek.
+
+--IPv6 da brodcast adresi yoktur.
+
+--Anycast ıpv6 ve ıpv4 adresini birden cok sunucuda kullanarak tek emrkezli bir sunucuyu engelleyerek herhangibi saldırıda sadece saldırı bölgesinde kesinti yasanması ve global caplı bir kesintinin önlemesine yarar.
+
+--IPv6 da subnetmask yoktur , onun yerine aynı şey olan Prefix var onun analtımıda şöyle
+2001:0db8:000a:0000:0000:0000:0000:0000 -> 2001:0db8:000a:0000 bu kısım prefix yani subnet maskesi geri kalan kısım ise interface ID yani hostları gösterir.
+
+--Link-local address(LLA)--> IPv6 Link Local address ile kendine ıp ataması kesinlikle olmalı atama yapar ama bununla internete cıkamazsın sadece kendi agında konuşursun . fe80 ile başlar
+
+--Global Unicast Address(GUA)--> bu ise public ip yani her cihazın ekndine ait gerçek bir ip adresi olmasını anlatıyor.
+
+--Unique Local Address -->İnternete Kapalı ve büyük networkerde IPv6 kullanılmak istediginde kullanılır
+
+--IPv6 da 3 farklı IP adrsi alma yöntemi vardır
+
+Statefull DHCPv6 direkt dhcp sunucusu size tüm bilgileri atar ve sizi takip eder büyük işletmeler içindir ip adresi sallamasyon degildir takip edilebilir --> 1 0 Kodu
+
+SLACC + DHCP ise herşeyin hazır bişey yapana gerek yok ama host kısmını random salladım öyle kullan diyor -->0 1 kodu
+
+SLACC ise direkt bazı bilgileri ben sana yolladım dns sunucunu sen elle gir der. -->0 0 Kodu
+
+-- IPv6 da ff08::/8 ile başlayan ip adrwsi multicast adrress aralıgıdır.arpsorgusunda ise ff02::11:ff ile yapılır.
+
+--Internet Control Message Protocol(1CMP) paketin yaşadıgı sorunlar ile ilgili geri bildirim döndürür.
+
+--ICPM bize yardımcı oldugu konular ; host erişilebilirliği,Hedef veya hizmete ulaşılamıyor , zaman aşımı gibi konulardır hem IPv4 hem IPv6 için ama IPv6da daha cok işlevsel bir protocol.
+
+-- echo request (type 9 , code 0) --> karşı makine hayattımı diye bakmak için gönderilen paket
+echo reply(type 0 , code 0) ise eğer hayattaysa geri döndürdügü paket.
+
+-- tracert cmd kodu bir paket yollarken hangi routehrları geçtigimizi gösterir tracert -d 8.8.8.8 ile deneyebiliriz.Windowsta tracert , routerlarda ise traceroute şle bu sorgu yapılır.
+
+--Segment tcp başlıgı eklenmiş dataya denir , datagram ise udp başlıgı eklenmiş dataya denir 
+
+--crc hata kontrolu demek
+
+--transport katmanı gelen veririn hangi uygulamaya porta iletilecegini belirlemektir
+
+--transport aynı zamanda datanın hangi porta gönderilecegi ve segmentlere ayırıp hangi sırayla gidecegini belirlemektir.paketlerin eksiksiz karşıya ulaştırılmasını sağlamaktır.
+
+--TCP güvenli ve eksiksiz iletim yapar sıra numaralarından biri iletilmediyse tekrar gönderir.alınan veriler onaylanır.paketlerin doğru sırada iletilmesini sağlar.alıcı tarafından kabul edilebilir verimli bir hızda gönderir(flaw contol denir buna).tcpyi email veya web sayfalarında kullanırız çünkü hata toleransı yoktur bunlarda.güvenli bir iletim lazımsa bize tcp tercih ederiz.
+
+--UDP ise veriyi elinden geldiğince hızlı göndermeye yarar tcp aksine birçok kontrolu hızlı olması adına yapmaz.udp yi ise dns sunucusu ve telefonla konuşma gibi tek soru/tek cevap(dns sorgusu) veya gerçek zamanlı (ses ve görüntülü uygulamalarda) kullanırız.hızlı göndereyim karşıya ulaşıyor ulaşmıyor umrumda degil diyorsak udp kullanırız.
+
+--source port gönderenin port numarası , destination port ise hedef port numarası
+
+--IANA Ip adresleri , port numaralarını , domain nameleri dağıtmakla sorumlu bir kuruluştur.
+
+--0 dan 1023 arası portlar herkesin kullanabileceği public portlardır web sunucuları eposta istemcileri bunu kullanır , 1024 dan 49151 arası portlar ticarı kuruluşlu işletmelerin kullangıgı genel portlardırkullanıcıların indirdigi uygulamalara revize edişmiştir , 49152 ile 65535 psortları ise gecici portlar olarak bilinir ve gecici surecler için kullanılır.
+
+-- netstat komutu bilgisayarınızada açık durumda olan portları gösterir
+-n tcp portlarını gösterirken -a hem tcp hem udp postlarını gösterir , -b parameresi ise hangi uygulamanın hangi portu actıgını listeler , -o ise process idyi gösterir. netstat -abno çok kullanacagımız bir kod detaylı analizi önümüze serer.
+
+--3 way hadshake(üçlü el sıkışma)
+SYN biti 1 ise karşıya ben seninle bağlantı kurmka istiyorum diyor , SYN + ACK 1 ve 1 ise senin bağlantını onaylıyorum diyor , en son ACK 1 olunca session oluşmuş oluyor
+
+oturum sonlandırma için ise bizim makinemiz FİN yollayıp alacagım paket bitti sessinı sonlandıralım der , sunucu ise ACK paketi gönderip FIN ın alındıgını söyler ve hemen ardından sunucu FIN paketi yollayıp oda sonlandırmak istedigini söyler en son bizim bilgisayarımız sunucudan gelen FIN i onaylamak için ACK paketi yollar.
+
+ACK = bağlantı kurulma ve sonlandırılmada kullanılan onay bayrağıdır
+RST = Bir hata veya zaman aşımı olunca bağlantıyı sıfırlar
+SYN = Bağlantı kuruluunda kullanılan sıra numaralarını senkronize eder
+FIN = Göndernden daha fazla veri yok ev oturumu sonlandırmada kullanılıyor.
+
+--SYN attack karşı makinenin oturum sınırı kadar SYN paketi gödererek karşı sunucu kapasitesini doldurmayı ve hizmet vermesini engellemeye yarar.
+
+--paket göderimi byte boyutuna göre olur.şöyle olur mesela bir dosya indiriyoruz bu sıralama önce ilk 100byte al sonra 101 ile 200 byte arasını al gibisinden oluyor.flow control ile göderecegi paketleri kontrol eder ve window size ile gönderilecek paket boyutları dinamik olarak ayarlanır.
+
+--TCP nin taşıyabielcegi max 1460 bytedır.
+
+--UDP sadece source ve destination port bilgilerini taşıyan cok basit ama çök önemli bir servistir bunda sıra numarası kontrolu yada paket tam gönderildimi kontrolu yoktur.
+
+--Application katmanı yani 7. katman son kullanıcıya arayüz sunar veri ouşturması için.
+
+--Presentation katmanı yani 6. katman bu katmanda ise datanın iletim biçimi formatı belirleniyor
+
+--Session kaymanı yani 5. katmanda kullanıcı ve sunucu arasındaki oturum takibini yapar.
+
+--Client/Server Modeli yani İstemci sunucu modeli gündelik kullandıgımız bir model telefon o an neye ihtiyacı avrsa o sunucuya gidip download veya upload yapabilir.
+
+--Peer to Peer Networks yani Eşler arası ağlar bir cihaz hem istemci hemde sunucu rolunu alabiliyor arkadaşının sana dosya paylaşımı yapması gibi düşünebilirsin.
+
+--URL = http://www.cisco.com/index.html
+http protokol adı , www makine adı ,cisco.com domain name , index.html istenen dosya adı url bu şekilde çalışır.
+
+--HTTP(Hypertext Transfer Pratokolü) , HTML (Hypertext Markup Language)
+
+--GET veri isteğidir ,POST form gibi verileri sunucuya yükler , PU resim gibi kaynakları web sunucusuna yükler.
+
+--SMTP(Simple Mail Transfer Protocol posta göndermek için kullanılır. , POP(Post Office Protocol) ve IMAP istemcilerin posta alması için kullanılır. yani mail göderdigimizde SMTP mail uygulamamıza girip bize gelen mailleri çekerken POP ve IMAP kullanırız.eskiden pop kullanılıyordu artık ımap kullanılıyor.
+
+--DNS(Domain Name Service) ip adreslerini okunabilir bir adrese cevirir.DNS sunucularının tuttugu bazi kayıt türleri
+Örnek Google
+A - googlenin ip adres kaydını tutar
+AAAA - Bu kayıt ise googlenin IPv6 adrsini tutar
+NS - googlenin DNS kayıtlarını tutar
+MX - googlenini mail kayıtlarını tutar
+
+--nslookup ile belirli bir host adını çözümlememize yarar
+nslookup cisco.com
+veya nslookup yazıp içine girip bize lazım olan kısmı örnegin mail kayıtlarının tutuldugu kısmı şu sırayla bulabiliriz
+nslookup
+set type=mx
+www.cisco.com
+
+--DHCP(Dynamic Host Configuration Protocol) dinamik olarak bize ip tanımlayan protokoldür.bir istemci bana ıp vercek biri varmı diye ağa brodcast yolluyor ağda bir dhcp sunucusu varsa bize bir ip öneriyor bizim sistemimizde bunu kabul edince ipmiz atanmış oluyor.DHCPDISCOVER DHCP keşfetme mesajı yayınlar , DHCOFFER istemciye DHCP önerir , DHCPPREQUEST bu öneriyi kabul ettigini söyler , DHCPACK ise bu işlemin başarı ile tamamlandığını döndürür , eğer sunucuya geç yanıt döndüyse ve teklif artık geçerli değilse DHCPNAK mesajı verir ve baştan başla der.
+
+--FTP(File Transfer Protocol) dosya yükleme veya upload etmek için kullanılan bir protokoldür günümüzde pek güvenli olmadıgı için FTP yerine SFTP kullanılır FTPnin güvenli halidir.
+
+-SMB(Server Message Block) bu protokol bir cihazdan dosya indirmenize yarıyor ve dosya paylaşımına yarıyor.
+
+--Telnet ve SSH SSH Telnetin güvenli halidir telnet cok güvensizdir.
+
+
+
+
 
 
 
